@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float jump;
+   
+
+
+    bool isGrounded;
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Jump");
+        float vertical = Input.GetAxisRaw("Vertical");
 
         MoveCharacter(horizontal, vertical);
         PlayMovementAnimation(horizontal,vertical);
@@ -50,6 +54,29 @@ public class PlayerController : MonoBehaviour
         }
        
     }
+    public void MovePlayerVertically(float vertical)
+    {
+        if (vertical > 0 && isGrounded)
+        {
+            animator.SetTrigger("Jump");
+            rb2d.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
+        }
+    }
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.transform.tag == "platform")
+        {
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.transform.tag == "platform")
+        {
+            isGrounded = false;
+        }
+    }
+
     private void MoveCharacter(float horizontal,float vertical)
     {
         Vector3 position = transform.position;
