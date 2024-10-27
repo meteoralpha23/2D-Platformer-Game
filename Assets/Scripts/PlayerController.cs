@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
 
     bool isGrounded;
+
+    public ScoreControlle scoreController;
     private void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -144,7 +147,11 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Crouch", crouch);
     }
 
-   
+    public void PickUpKey()
+    {
+        Debug.Log("Key picked UP");
+        scoreController.IncreaseScore(5);
+    }
 }
     
 
