@@ -12,11 +12,11 @@ public class EnemyController : MonoBehaviour
     private Vector3 currentPoint;
     public float speed;
 
-    private SpriteRenderer sr;
+    private SpriteRenderer spr;
 
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        spr = GetComponent<SpriteRenderer>();
         currentPoint = B.position;
     }
 
@@ -25,12 +25,12 @@ public class EnemyController : MonoBehaviour
         if (transform.position == A.position)
         {
             currentPoint = B.position;
-            sr.flipX = false;
+            spr.flipX = false;
         }
         else if (transform.position == B.position)
         {
             currentPoint = A.position;
-            sr.flipY = true;
+            spr.flipY = true;
         }
 
 
