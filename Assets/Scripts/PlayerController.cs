@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -151,6 +152,19 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Key picked UP");
         scoreController.IncreaseScore(5);
+    }
+
+    public  void KillPlayer()
+    {
+        Debug.Log("Player Killed");
+        Destroy(gameObject);
+        ReloadLevel();
+
+    }
+
+    private void ReloadLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }
     

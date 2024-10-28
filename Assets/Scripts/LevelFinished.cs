@@ -13,4 +13,6 @@ public class LevelFinished : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+
 }
