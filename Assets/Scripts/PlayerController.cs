@@ -148,6 +148,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Crouch", crouch);
     }
 
+     public Heart_Health heartHealth;
     public void PickUpKey()
     {
         Debug.Log("Key picked UP");
@@ -156,10 +157,7 @@ public class PlayerController : MonoBehaviour
 
     public  void KillPlayer()
     {
-        Debug.Log("Player Killed");
-        Destroy(gameObject);
-        ReloadLevel();
-
+        heartHealth.TakeDamage(1);
     }
 
     private void ReloadLevel()

@@ -30,20 +30,21 @@ public class EnemyController : MonoBehaviour
         else if (transform.position == B.position)
         {
             currentPoint = A.position;
-            spr.flipY = true;
+            spr.flipX = true;
         }
 
 
-        transform.position = Vector2.MoveTowards(transform.position, currentPoint, speed*Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, currentPoint, speed*Time.deltaTime);
     }
 
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (player != null)
         {
-            collision.gameObject.GetComponent<PlayerController>().KillPlayer();
+            player.KillPlayer();  
         }
     }
 }

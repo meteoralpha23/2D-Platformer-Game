@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 2995270339052211137}
   - component: {fileID: 3820792719889709098}
   - component: {fileID: 2227817616905173710}
+  - component: {fileID: 867342688858263842}
   m_Layer: 6
   m_Name: Anim_IDLE_00001
   m_TagString: Player
@@ -288,5 +289,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7792578154048149229}
   boxCol: {fileID: 3820792719889709098}
-  speed: 2
-  jump: 6
+  speed: 5
+  jump: 15
+  scoreController: {fileID: 0}
+--- !u!114 &867342688858263842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196871467265496400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2569900acca5fbb46a7b1ea870dfddba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  numOfHearts: 3
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
