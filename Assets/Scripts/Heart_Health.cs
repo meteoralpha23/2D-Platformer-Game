@@ -13,6 +13,8 @@ public class Heart_Health : MonoBehaviour
     [SerializeField] Sprite emptyHeart;
     [SerializeField] GameObject player;  // Reference to the player GameObject
 
+    [SerializeField] GameOverController gameOverController;
+
     // Method to reduce health
     public void TakeDamage(int damage)
     {
@@ -24,8 +26,8 @@ public class Heart_Health : MonoBehaviour
         
         if (health <= 0)
         {
-            Destroy(player);
-            ReloadScene();
+            gameOverController.PlayerDied();
+            
         }
     }
 
@@ -38,10 +40,7 @@ public class Heart_Health : MonoBehaviour
         }
     }
 
-    private void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload the current scene
-    }
+
 
     void Update()
     {
