@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class LobbyCOntroller : MonoBehaviour
 {
     public Button buttonPlay;
+    public GameObject levelSelection;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class LobbyCOntroller : MonoBehaviour
 
     private void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+        levelSelection.SetActive(true); 
     }
 }
