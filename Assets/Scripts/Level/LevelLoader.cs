@@ -4,40 +4,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))] 
+[RequireComponent(typeof(Button))]
 public class LevelLoader : MonoBehaviour
-    {
-    private Button button;
-    public string LevelName;
+{
+    [SerializeField] private Button button;
+    [SerializeField] public string LevelName;
 
     private void Awake()
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(onClick);
+        button.onClick.AddListener(TryLoadLevel);
     }
 
-
-    private void onClick()
+    private void TryLoadLevel()
     {
         LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(LevelName);
-        switch(levelStatus)
+
+        switch (levelStatus)
         {
-             case LevelStatus.locked:
-                Debug.Log("Cant play this level till you unlocked it");
+            case LevelStatus.locked:
+                Debug.Log("This Level is Locked");
                 break;
-
             case LevelStatus.Unlocked:
-                Debug.Log("Unlocked");
+                SceneManager.LoadScene(LevelName);
                 break;
-
             case LevelStatus.Completed:
-                Debug.Log("Completed");
+                SceneManager.LoadScene(LevelName);
                 break;
         }
-
-
-
-
-        SceneManager.LoadScene(LevelName);
     }
 }
