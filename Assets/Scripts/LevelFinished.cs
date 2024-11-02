@@ -7,10 +7,10 @@ public class LevelFinished : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            // Restart the current active scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            LevelManager.Instance.SetCurrentLevelComplete();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
