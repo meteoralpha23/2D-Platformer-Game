@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelOverController : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class LevelOverController : MonoBehaviour
        if(other.gameObject.GetComponent<PlayerController>() != null)
         {
             Debug.Log("Level Finished)");
+            LevelManager.Instance.SetLevelStatus(SceneManager.GetActiveScene().name,LevelStatus.Completed);
+            LevelManager.Instance.MarkCurrentLevelComplete();
         }
     }
+    
 
 
 }
