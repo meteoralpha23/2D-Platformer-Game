@@ -21,6 +21,7 @@ public class GameOverController : MonoBehaviour
     {
         SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
         gameObject.SetActive(true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
        
     }
 
